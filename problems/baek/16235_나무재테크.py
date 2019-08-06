@@ -3,7 +3,7 @@ sys.stdin = open('input_16235.txt', 'r')
 
 N, M, K = map(int, input().split())
 A = [[0 for i in range(N+2)] for j in range(N+2)]
-nutrient_info = [[0 for i in range(N+2)] for j in range(N+2)]
+nutrient_info = [[0 for _ in range(N+2)] for _ in range(N+2)]
 for i in range(1, N+1):
     for j in range(1, N+1):
         nutrient_info[i][j] = 5  # 나무 양분 초기값 5
@@ -22,7 +22,7 @@ for k in range(K):
     for r in range(1, N + 1):
         for c in range(1, N + 1):
             # 봄
-            if len(tree_info[r][c]):
+            if len(tree_info[r][c]):  # 한바퀴 돌면 len != 0 인 영역이 늘어남
                 tree_info[r][c].sort()
                 i = 0
                 while i < len(tree_info[r][c]):
@@ -32,7 +32,7 @@ for k in range(K):
                         i += 1
                     else:
                         # 여름
-                        nutrient_info[r][c] += int(tree_info[r][c][i] / 2)
+                        nutrient_info[r][c] += tree_info[r][c][i] // 2
                         # tree_info[r][c] = tree_info[r][c][:i]
                         tree_info[r][c].pop(i)
             # 가을
@@ -43,6 +43,9 @@ for k in range(K):
                             tree_info[r + dx[vector]][c + dy[vector]].append(1)
             # 겨울
             nutrient_info[r][c] += A[r][c]
+    for tree in tree_info:
+        print(tree)
+    print()
 count = 0
 for r in range(1, N + 1):
     for c in range(1, N + 1):
