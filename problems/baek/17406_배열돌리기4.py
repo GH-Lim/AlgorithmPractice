@@ -3,7 +3,7 @@ from pprint import pprint
 sys.stdin = open('input_17406.txt', 'r')
 
 
-def rotate(target, r, s, c):
+def rotate(r, s, c):
     r -= 1
     c -= 1
     for shell in range(s):
@@ -16,7 +16,7 @@ def rotate(target, r, s, c):
                 mode += 1
             next_x += dx[mode]
             next_y += dy[mode]
-            target[left_top_x][left_top_y], target[next_x][next_y] = target[next_x][next_y], target[left_top_x][left_top_y]
+            sub_arr[left_top_x][left_top_y], sub_arr[next_x][next_y] = sub_arr[next_x][next_y], sub_arr[left_top_x][left_top_y]
 
 
 def permute(nums):
@@ -34,6 +34,14 @@ def permute(nums):
                 if j not in result:
                     result.append(j)
     return result
+
+
+def calc_min():
+    global min_row
+    for row in sub_arr:
+        if sum(row) < min_row:
+            min_row = sum(row)
+
 
 
 N, M, K = map(int, input().split())
@@ -57,8 +65,6 @@ for case in all_cases:
     sub_arr = [row.copy() for row in arr]
     for k in case:
         rotate(sub_arr, r[k], s[k], c[k])
-    for row in sub_arr:
-        if sum(row) < min_row:
-            min_row = sum(row)
+    calc_min()
 
 print(min_row)
