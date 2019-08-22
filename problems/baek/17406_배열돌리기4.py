@@ -19,21 +19,33 @@ def rotate(r, s, c):
             sub_arr[left_top_x][left_top_y], sub_arr[next_x][next_y] = sub_arr[next_x][next_y], sub_arr[left_top_x][left_top_y]
 
 
-def permute(nums):
-    length = len(nums)
-    if length == 1:
-        return [nums]
-    else:
-        result = []
-        for i in nums:
-            b = [num for num in nums]
-            b.remove(i)
-            b.sort()
-            for j in permute(b):
-                j.insert(0, i)
-                if j not in result:
-                    result.append(j)
-    return result
+def dfs(num):
+    global sub_arr
+    if num == K:
+        calc_min()
+        return
+    for n in range(K):
+        if not visited[n]:
+            visited[n] = True
+            rotate(r[n], s[n], c[n])
+            dfs(n+1)
+
+
+# def permute(nums):
+#     length = len(nums)
+#     if length == 1:
+#         return [nums]
+#     else:
+#         result = []
+#         for i in nums:
+#             b = [num for num in nums]
+#             b.remove(i)
+#             b.sort()
+#             for j in permute(b):
+#                 j.insert(0, i)
+#                 if j not in result:
+#                     result.append(j)
+#     return result
 
 
 def calc_min():
@@ -59,12 +71,13 @@ for k in range(K):
     r[k], c[k], s[k] = map(int, input().split())
 min_row = sum(arr[0])
 cases = list(range(K))
-all_cases = permute(cases)
 
-for case in all_cases:
-    sub_arr = [row.copy() for row in arr]
-    for k in case:
-        rotate(sub_arr, r[k], s[k], c[k])
-    calc_min()
+# all_cases = permute(cases)
+
+sub_arr = [row.copy() for row in arr]
+visited = [False] * K
+dfs(0)
+calc_min()
+# print(result)
 
 print(min_row)
