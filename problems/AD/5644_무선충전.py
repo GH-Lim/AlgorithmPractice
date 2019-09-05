@@ -6,8 +6,8 @@ dy = [0, -1, 0, +1, 0]
 T = int(input())
 for tc in range(1, T+1):
     M, A = map(int, input().split())
-    move1 = list(map(int, input().split()))
-    move2 = list(map(int, input().split()))
+    move1 = list(map(int, input().split())) + [0]
+    move2 = list(map(int, input().split())) + [0]
     arr = [[0] * 10 for _ in range(10)]
     for bc in range(A):
         x, y, c, p = map(int, input().split())
@@ -30,7 +30,7 @@ for tc in range(1, T+1):
     y1, x1 = 0, 0
     y2, x2 = 9, 9
     charge = 0
-    for t in range(M):
+    for t in range(M + 1):
         if arr[y1][x1] != 0:
             user1 = arr[y1][x1]
             user1.sort(reverse=True)
@@ -77,13 +77,13 @@ for tc in range(1, T+1):
                         charge += temp
                         charge += user2[1][0] if user2[1][0] > user1[1][0] else user1[1][0]
                     else:
-                        charge += user1[0][1]
-                        charge += user2[0][1]
+                        charge += user1[0][0]
+                        charge += user2[0][0]
             else:
-                charge += user1[0][1]
-                charge += user2[0][1]
+                charge += user1[0][0]
+                charge += user2[0][0]
         y1 += dy[move1[t]]
         x1 += dx[move1[t]]
         y2 += dy[move2[t]]
         x2 += dx[move2[t]]
-    print(charge)
+    print('#{} {}'.format(tc, charge))
