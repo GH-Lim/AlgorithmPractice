@@ -27,14 +27,13 @@ for tc in range(1, T + 1):
             if 6 <= board[i][j] <= 10:
                 WH[board[i][j]].append((i, j))
     max_score = 0
-    for D in range(4):
-        for i in range(N):
-            for j in range(N):
+    for i in range(N):
+        for j in range(N):
+            for d in range(4):
                 if board[i][j] == 0:
                     score = 0
                     x = i
                     y = j
-                    d = D
                     while True:
                         x += dx[d]
                         y += dy[d]
@@ -59,6 +58,7 @@ for tc in range(1, T + 1):
                                     if wh != (x, y):
                                         x = wh[0]
                                         y = wh[1]
+                                        break
                         else:
                             score *= 2
                             score += 1
@@ -91,6 +91,7 @@ for tc in range(1, T + 1):
 #                 for wh in WH[state]:
 #                     if wh != (x, y):
 #                         x, y = wh
+#                         break
 #         else:
 #             d = block[5][d]
 #             score += 1
