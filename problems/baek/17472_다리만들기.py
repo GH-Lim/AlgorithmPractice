@@ -26,7 +26,16 @@ def bridge(y, x, n):
             next_x += dx[mode]
 
 
-def solve():
+def dfs(i, length, cnt):
+    global ans
+    if cnt == numbering - 3:
+        ans = min(ans, length)
+        return
+    for j in range(numbering - 2):
+        if not visited[j] and G[i][j] != 10:
+            visited[j] = 1
+            dfs(j, length + G[i][j], cnt + 1)
+            visited[j] = 0
 
 
 N, M = map(int, input().split())
@@ -46,4 +55,11 @@ for i in range(N):
         if i_map[i][j]:
             bridge(i, j, i_map[i][j])
 visited = [0] * (numbering - 2)
+ans = 50
+for i in range(numbering - 2):
+    visited[i] = 1
+    dfs(i, 0, 0)
+    visited[i] = 0
 
+print(G)
+print(-1 if ans == 50 else ans)
