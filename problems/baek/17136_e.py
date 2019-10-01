@@ -51,7 +51,6 @@ def detach(y, x, k):
 
 plate = [list(map(int, input().split())) for _ in range(10)]
 one_cnt = sum(sum(plate, []))
-count = sum(sum(plate, []))
 ans = 26
 visited = [[0] * 10 for _ in range(10)]
 paper = [5] * 5
