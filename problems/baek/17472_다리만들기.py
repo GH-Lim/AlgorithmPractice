@@ -54,17 +54,34 @@ for i in range(N):
     for j in range(M):
         if i_map[i][j]:
             bridge(i, j, i_map[i][j])
-visited = [10] * (numbering - 2)
+visited = [0] * (numbering - 2)
 ans = 50
+nodes = [[10, i] for i in range(numbering - 2)]
 # for i in range(numbering - 2):
 #     visited[i] = 1
 #     dfs(i, 0, 0)
 #     visited[i] = 0
-for n in range(numbering - 3):
-    for i in range(n, numbering - 2):
-        if visited[n] == 10 and G[n][i] != 10:
-            visited[n] = 0
-        visited[i] = min(visited[i], G[n][i])
-
-# print(visited)
-print(-1 if 10 in visited else sum(visited))
+# for n in range(numbering - 3):
+#     for i in range(n, numbering - 2):
+#         if visited[n] == 10 and G[n][i] != 10:
+#             visited[n] = 0
+#         visited[i] = min(visited[i], G[n][i])
+nodes[0][0] = 0
+q = [nodes[0]]
+while q:
+    val, node = q.pop(0)
+    visited[node] = 1
+    for i in range(1, numbering - 2):
+        if G[node][i] != 10:
+            if not visited[i]:
+                if nodes[i][0] > G[node][i]:
+                    nodes[i][0] = G[node][i]
+                q.append(nodes[i])
+    q.sort()
+ans = 0
+for i in range(1, numbering - 2):
+    if nodes[i][0] == 10:
+        ans = -1
+        break
+    ans += nodes[i][0]
+print(ans)
