@@ -30,7 +30,7 @@ def bfs(y, x, z):
             for v in range(6):
                 next_y, next_x, next_z = y + dy[v], x + dx[v], z + dz[v]
                 if 0 <= next_y < 5 and 0 <= next_x < 5 and 0 <= next_z < 5:
-                    dd
+                    if
 
 
 
@@ -68,3 +68,5 @@ for a in range(4):
                 cube[3] = p4[c]
                 for e in range(4):
                     cube[4] = p5[c]
+
+                    bfs(0, 0, 0)
