@@ -1,8 +1,15 @@
-nodes = [[10, i] for i in range(10)]
+from collections import deque
 
-a = nodes[0]
-stack = [a]
-print(a)
-nodes[0][0] = 3
-print(a)
-print(stack)
+q = deque([1, 2, 3, 4, 5, 6])
+
+q.rotate(1)
+
+print(q)
+
+q.rotate(-1)
+
+print(q)
+
+q.rotate(-1)
+
+print(q)
