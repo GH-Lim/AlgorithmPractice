@@ -1,15 +1,4 @@
-from collections import deque
-
-q = deque([1, 2, 3, 4, 5, 6])
-
-q.rotate(1)
-
-print(q)
-
-q.rotate(-1)
-
-print(q)
-
-q.rotate(-1)
-
-print(q)
+a = [[2, 1], [3, 1], [1, 1]]
+b = [(1, 2), (1, 3), (1, 1)]
+print(sorted(a, key=lambda x: x[1]))
+print(sorted(b))

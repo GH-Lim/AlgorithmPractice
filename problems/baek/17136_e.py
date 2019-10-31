@@ -13,8 +13,8 @@ def dfs(y, x, cnt, one):
                 if check(y, x, k):
                     paper[k - 1] -= 1
                     attach(y, x, k)
-                    if x + 1 < 10:
-                        dfs(y, x + 1, cnt + 1, one - (k * k))
+                    if x + k < 10:
+                        dfs(y, x + k, cnt + 1, one - (k * k))
                     else:
                         dfs(y + 1, 0, cnt + 1, one - (k * k))
                     detach(y, x, k)

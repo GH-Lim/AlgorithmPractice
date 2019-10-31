@@ -28,23 +28,22 @@ def perm(i, j, a1, a2, a3, a4, a5):
         return
     while i < 10:
         while j < 10:
-            if plate[i][j]:
-                if a5 != 5 and a1 + a2 + a3 + a4 + a5 < ans and attach(i, j, 5):
-                    perm(i, j, a1, a2, a3, a4, a5 + 1)
+            if plate[i][j] and a1 + a2 + a3 + a4 + a5 + 1 < ans:
+                if a5 != 5 and attach(i, j, 5):
+                    perm(i, j+5, a1, a2, a3, a4, a5 + 1)
                     detach(i, j, 5)
-                if a4 != 5 and a1 + a2 + a3 + a4 + a5 < ans and attach(i, j, 4):
-                    perm(i, j, a1, a2, a3, a4 + 1, a5)
+                if a4 != 5 and attach(i, j, 4):
+                    perm(i, j+4, a1, a2, a3, a4 + 1, a5)
                     detach(i, j, 4)
-                if a3 != 5 and a1 + a2 + a3 + a4 + a5 < ans and attach(i, j, 3):
-                    perm(i, j, a1, a2, a3 + 1, a4, a5)
+                if a3 != 5 and attach(i, j, 3):
+                    perm(i, j+3, a1, a2, a3 + 1, a4, a5)
                     detach(i, j, 3)
-                if a2 != 5 and a1 + a2 + a3 + a4 + a5 < ans and attach(i, j, 2):
-                    perm(i, j, a1, a2 + 1, a3, a4, a5)
+                if a2 != 5 and attach(i, j, 2):
+                    perm(i, j+2, a1, a2 + 1, a3, a4, a5)
                     detach(i, j, 2)
-                if a1 != 5 and a1 + a2 + a3 + a4 + a5 < ans and attach(i, j, 1):
-                    perm(i, j, a1 + 1, a2, a3, a4, a5)
+                if a1 != 5 and attach(i, j, 1):
+                    perm(i, j+1, a1 + 1, a2, a3, a4, a5)
                     detach(i, j, 1)
-            j += 1
         j = 0
         i += 1
 
