@@ -1,4 +1,4 @@
-a = [[2, 1], [3, 1], [1, 1]]
-b = [(1, 2), (1, 3), (1, 1)]
-print(sorted(a, key=lambda x: x[1]))
-print(sorted(b))
+a= {1, 2}
+b = {2}
+print(a.isdisjoint(b))
+print(a)
