@@ -1,7 +1,6 @@
 def permH(k, res, plus, minus, mul, div):
     global MAX, MIN
     if k == N - 1:
-        print(res)
         MAX = max(MAX, res)
         MIN = min(MIN, res)
         return
