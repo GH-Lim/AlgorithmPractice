@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 N, M = map(int, input().split())
 office = [list(map(int, input().split())) for _ in range(N)]
 
@@ -52,6 +53,12 @@ ans = 0
 solve(0, set())
 
 print(blank - ans)
+=======
+a= {1, 2}
+b = {2}
+print(a.isdisjoint(b))
+print(a)
+>>>>>>> 8df44518d12af07f5f1029184e937029b12f688c
 =======
 a= {1, 2}
 b = {2}
