@@ -1,4 +1,7 @@
 from collections import deque
+from sys import stdin
+
+input = stdin.readline
 
 R, C = map(int, input().split())
 maze = [input() for _ in range(R)]

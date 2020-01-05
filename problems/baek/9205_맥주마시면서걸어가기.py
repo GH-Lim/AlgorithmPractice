@@ -5,4 +5,3 @@ for tc in range(1, int(input()) + 1):
     G = [[inf] * (n + 2) for _ in range(n + 2)]
     for s in range(n + 2):
         for e in range(n + 2):
-            
