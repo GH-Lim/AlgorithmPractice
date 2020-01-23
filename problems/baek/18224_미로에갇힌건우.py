@@ -35,11 +35,9 @@ while q:
             if (ny, nx) == (n - 1, n - 1): break
             if 0 <= ny < n and 0 <= nx < n and (ny, nx) not in sub_visited:
                 if not maze[ny][nx]:
-                    if not time or (time and (ny, nx) not in visited):
-                        # 낮 or 밤에는 안가본 곳만
-                        q.append((ny, nx))
-                        sub_visited[(ny, nx)] = 1
-                        visited[(ny, nx)] = 1
+                    q.append((ny, nx))
+                    sub_visited[(ny, nx)] = 1
+                    visited[(ny, nx)] = 1
                 else:
                     if time:
                         temp = jump_wall(ny, nx, d)
