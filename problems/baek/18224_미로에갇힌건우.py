@@ -1,5 +1,7 @@
 from collections import deque
+import sys
 
+input = sys.stdin.readline
 
 def jump_wall(ny, nx, d):
     jy, jx = ny + dy[d], nx + dx[d]
@@ -42,15 +44,11 @@ while q:
                         temp = jump_wall(ny, nx, d)
                         if temp:
                             if not visited[temp[0]][temp[1]][cnt][time]:
-                                # if temp == (n - 1, n - 1): break
                                 q.append(temp)
                                 visited[temp[0]][temp[1]][cnt][time] = 1
-        # else: continue # 출구 못찾았으면
-        # break
     else:
         cnt += 1
         continue
     is_valid = True
     break
 print(f'{day} {"moon" if time else "sun"}' if is_valid else -1)
-print(day, time, is_valid)
