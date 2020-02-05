@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-N = int(input())
-M = int(input())
-
-arr = [list(map(int, input().split())) for _ in range(N)]
-plan = list(map(int, input().split()))
-
-def
-for i in range(N):
-    for j in range(N):
-=======
 N, M = int(input()), int(input())
 arr = [list(map(int, input().split())) for _ in range(N)]
 plan = list(map(int, input().split()))
@@ -51,4 +40,3 @@ for i in range(1, M):
         answer = 'NO'
         break
 print(answer)
->>>>>>> 608292b391d0aa03326f1777eaee0fb0a6047f54
