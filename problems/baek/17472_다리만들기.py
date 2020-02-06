@@ -77,7 +77,7 @@ while q:
                 if nodes[i][0] > G[node][i]:
                     nodes[i][0] = G[node][i]
                 q.append(nodes[i])
-    q.sort()
+    q.sort() # heapq or priority queue 사용과 같은 효과. 시간이 조금 더 걸릴 듯
 ans = 0
 for i in range(1, numbering - 2):
     if nodes[i][0] == 10:
