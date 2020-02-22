@@ -5,7 +5,7 @@ for tc in range(1, int(input()) + 1):
 
     min_diff = 50000
     combs = list(combinations(list(range(N)), N // 2))
-    for i in range(len(combs) // 2):
+    for i in range(len(combs) // 2):  # 이터툴즈로 만든 comb 는 좌우 대칭
         A = 0
         B = 0
         for j in range(N//2):

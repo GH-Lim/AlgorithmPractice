@@ -14,8 +14,8 @@ for tc in range(1, int(input()) + 1):
             y, x, A, d = micros.pop()
             ny, nx = y + dy[d], x + dx[d]
             if ny == 0 or ny == N - 1 or nx == 0 or nx == N - 1:
-                d = 1 if d == 2 else 2 if d == 1 else 3 if d == 4 else 4
-                cell_arr[ny][nx].append([ny, nx, A//2, d])
+                d = 1 if d == 2 else 2 if d == 1 else 3 if d == 4 else 4  # 방향은 반대로
+                cell_arr[ny][nx].append([ny, nx, A//2, d])  # 수는 반감
             else:
                 cell_arr[ny][nx].append([ny, nx, A, d])
 

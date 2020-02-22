@@ -15,7 +15,7 @@ for tc in range(1, T + 1):
     N = int(input())
     board = [list(map(int, input().split())) for _ in range(N)]
 
-    WH = {
+    WH = {  # 웜홀
         6: [],
         7: [],
         8: [],
@@ -24,7 +24,7 @@ for tc in range(1, T + 1):
     }
     for i in range(N):
         for j in range(N):
-            if 6 <= board[i][j] <= 10:
+            if 6 <= board[i][j] <= 10:  # board 의 번호가 6~10 이면 해당 웜홀에 좌표 추가
                 WH[board[i][j]].append((i, j))
     max_score = 0
     for i in range(N):
@@ -61,10 +61,10 @@ for tc in range(1, T + 1):
                                         break
                         else:
                             score *= 2
-                            score += 1
+                            score += 1  # 벽에 부딪히면 이동 경로를 그대로 되돌아옴
                             break
                     if max_score < score:
-                        max_score = score
+                        max_score = score  # 점수 최신화
     print('#{} {}'.format(tc, max_score))
 
 
