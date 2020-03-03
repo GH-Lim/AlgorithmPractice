@@ -95,7 +95,7 @@ for tc in range(1, T + 1):
             dy = atoms[i][1] - atoms[j][1]
             v1 = atoms[i][2]
             v2 = atoms[j][2]
-            if dy == 0:
+            if dy == 0:  #  부딪힐 수 있는 4가지 경우의 수를 모두 후보군에 넣는다.
                 if v1 == 2 and v2 == 3 and dx > 0:
                     candidates.append([dx / 2, i, j])
                 elif v1 == 3 and v2 == 2 and dx < 0:
