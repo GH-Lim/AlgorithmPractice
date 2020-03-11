@@ -52,3 +52,6 @@ for r in range(1, N + 1):
         count += len(tree_info[r][c])
 
 print(count)
+
+# 시간초과가 많이 났던 문제.
+# deque 를 이용하면 시간을 효과적으로 줄일 수 있다.
