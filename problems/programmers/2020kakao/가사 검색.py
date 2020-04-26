@@ -12,21 +12,19 @@ class Trie(object):
     def insert(self, word):
         cur_node = self.head
         word_len = len(word)
-        try:
+        if word_len in cur_node.trailing_len:
             cur_node.trailing_len[word_len] += 1
-        except:
+        else:
             cur_node.trailing_len[word_len] = 1
+
         for char in word:
-            try:
-                cur_node.children[char]
-            except:
+            if char not in cur_node.children:
                 cur_node.children[char] = Node(char)
             cur_node = cur_node.children[char]
             word_len -= 1
-
-            try:
+            if word_len in cur_node.trailing_len:
                 cur_node.trailing_len[word_len] += 1
-            except:
+            else:
                 cur_node.trailing_len[word_len] = 1
 
     def find(self, querie):
@@ -36,13 +34,13 @@ class Trie(object):
         wildcard = querie_len - len(querie_strip)
         if querie_len not in cur_node.trailing_len:
             return 0
-        if wildcard == 0:
-            return cur_node.trailing_len[querie_len]
         for char in querie_strip:
-            try:
+            if char in cur_node.children:
                 cur_node = cur_node.children[char]
-            except:
+            else:
                 return 0
+        if wildcard not in cur_node.trailing_len:
+            return 0
         return cur_node.trailing_len[wildcard]
 
 
