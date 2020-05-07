@@ -1,22 +1,31 @@
 from collections import deque
 from itertools import permutations
+
+def perms(k, n, weak, dist, pick):
+    global answer
+    if not pick:
+        for i in range(len(weak)):
+            start_idx = i
+            for p in pick:
+                check_dist = weak[start_idx] + p
+                for _ in range(len(weak)):
+                    if check_dist < weak[start_idx]:
+
+
+    if k == n:
+        print(pick)
+        return 0
+    for i in range(len(dist)):
+        if dist[i] not in pick:
+            perms(k + 1, n, weak, dist, pick+[dist[i]])
+
 def solution(n, weak, dist):
+    global answer
     answer = len(dist) + 1
     weak = deque(weak)
-    dist_perms = list(permutations(dist))
-    for _ in range(len(weak)):
-        for d_perm in dist_perms:
-            start_i = 0
-            for i in range(len(d_perm)):
-                for j in range(start_i + 1, len(weak)):
-                    if weak[start_i] + d_perm[i] >= weak[-1]:
-                        answer = min(answer, i + 1)
-                        break
-                    if weak[start_i] + d_perm[i] < weak[j]:
-                        start_i = j
-                        break
-        weak.rotate(-1)
-        weak[-1] += n
-    return answer if answer != len(dist) + 1 else -1
+    dist.sort(reverse=True)
+
+    perms(0, len(dist), weak, dist, [])
+    return answer
 
 print(solution(12, [1, 3, 4, 9, 10], [3, 5, 7]))
