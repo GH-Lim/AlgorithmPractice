@@ -27,14 +27,14 @@ class Trie(object):
             else:
                 cur_node.trailing_len[word_len] = 1
 
-    def find(self, querie):
+    def find(self, query):
         cur_node = self.head
-        querie_len = len(querie)
-        querie_strip = querie.strip("?")
-        wildcard = querie_len - len(querie_strip)
-        if querie_len not in cur_node.trailing_len:
+        query_len = len(query)
+        query_strip = query.strip("?")
+        wildcard = query_len - len(query_strip)
+        if query_len not in cur_node.trailing_len:
             return 0
-        for char in querie_strip:
+        for char in query_strip:
             if char in cur_node.children:
                 cur_node = cur_node.children[char]
             else:
@@ -53,11 +53,11 @@ def solution(words, queries):
         trie.insert(word)
         rev_trie.insert(word[::-1])
 
-    for querie in queries:
-        if querie[0] == '?':
-            answer.append(rev_trie.find(querie[::-1]))
+    for query in queries:
+        if query[0] == '?':
+            answer.append(rev_trie.find(query[::-1]))
         else:
-            answer.append(trie.find(querie))
+            answer.append(trie.find(query))
     return answer
 
 # # 효율성 테스트 1, 2, 3 실패
