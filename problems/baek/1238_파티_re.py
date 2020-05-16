@@ -22,6 +22,8 @@ def dijkstra(arr, rev):
             if dij_list[i][rev] > val + v:
                 dij_list[i][rev] = val + v
                 q.append([val + v, i])
+        # heapq or PriorityQueue 써서 풀어볼 것.
+        # 시간 차이가 얼마나 나려나
         q.sort(reverse=True)
 
 
@@ -30,3 +32,5 @@ dijkstra(rev_G, True)
 
 result = [sum(dij_list[i]) for i in range(N)]
 print(max(result))
+
+
