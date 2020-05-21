@@ -19,7 +19,7 @@ def spin(sticker):
     R, C, sticker = sticker
     temp_sticker = []
     for i, j in sticker:
-        temp_sticker.append((C - j - 1, i))
+        temp_sticker.append((j, R - i - 1))
     return C, R, temp_sticker
 
 
