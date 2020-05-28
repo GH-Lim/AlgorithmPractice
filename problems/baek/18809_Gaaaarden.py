@@ -1,4 +1,8 @@
 from itertools import combinations
+from sys import stdin
+
+input = stdin.readline
+
 N, M, G, R = map(int, input().split())
 
 garden = [list(map(int, input().split())) for _ in range(N)]
