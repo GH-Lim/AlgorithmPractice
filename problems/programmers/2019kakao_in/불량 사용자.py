@@ -1,3 +1,4 @@
+from itertools import permutations
 def check(u_id, b_id):
     for i in range(len(u_id)):
         if b_id[i] == '*':
@@ -8,11 +9,14 @@ def check(u_id, b_id):
 
 
 def solution(user_id, banned_id):
+    answer = set()
     if len(user_id) == len(banned_id):
         return 1
-    answer = {}
-    for b in banned_id:
-        for u in user_id:
-            if check(u, b):
-
-    return answer
+    for combs in permutations(user_id, len(banned_id)):
+        for u, b in zip(combs, banned_id):
+            if len(u) == len(b) and check(u, b):
+                continue
+            break
+        else:
+            answer.add(tuple(sorted(combs)))
+    return len(answer)
