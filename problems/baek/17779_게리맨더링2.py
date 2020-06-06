@@ -1,6 +1,6 @@
-N = int(input())
-
-A = [list(map(int, input().split())) for _ in range(N)]
+# N = int(input())
+#
+# A = [list(map(int, input().split())) for _ in range(N)]
 
 def divide(x, y, d1, d2, ans):
     while True:
