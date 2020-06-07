@@ -10,7 +10,7 @@ def perms(k, n, weak, dist, pick):
                 check_dist = weak[start_idx] + p
                 for _ in range(len(weak)):
                     if check_dist < weak[start_idx]:
-
+                        pass
 
     if k == n:
         print(pick)
