@@ -9,8 +9,7 @@ def solution(cacheSize, cities):
         city = city.lower()
         if city in cache:
             answer += 1
-            idx = cache.index(city)
-            del cache[idx]
+            cache.remove(city)
         else:
             answer += 5
             if len(cache) == cacheSize:
