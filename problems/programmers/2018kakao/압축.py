@@ -8,7 +8,7 @@ def solution(msg):
     i = 0
     while i < len(msg):
         j = 1
-        while j < len(msg):
+        while i + j - 1 < len(msg):
             if msg[i:i + j] in dictionary:
                 j += 1
             else:
