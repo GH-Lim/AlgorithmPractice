@@ -12,11 +12,10 @@ def solution(msg):
             if msg[i:i + j] in dictionary:
                 j += 1
             else:
-
-                index += 1
                 break
         answer.append(dictionary[msg[i:i + j - 1]])
         dictionary[msg[i:i + j]] = index
+        index += 1
         i += j - 1
 
     return answer
