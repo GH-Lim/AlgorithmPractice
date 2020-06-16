@@ -1,5 +1,5 @@
-A = {'A': '0', 'A#': '1', 'B': '2', 'C': '3', 'C#': '4', 'D': '5',
-     'D#': '6', 'E': '7', 'F': '8', 'F#': '9', 'G': 'A', 'G#': 'B'}
+A = {'A#': '1', 'C#': '4', 'D#': '6', 'G#': 'B', 'A': '0', 'B': '2',
+     'C': '3', 'D': '5', 'E': '7', 'F': '8', 'F#': '9', 'G': 'A'}
 def solution(m, musicinfos):
     musics = {}
     e_m = encode_m(m)
@@ -16,14 +16,8 @@ def solution(m, musicinfos):
     return '(None)'
 
 def encode_m(m):
-    i = 0
-    encoded = ''
-    while i < len(m):
-        if m[i: i + 2] in ['A#', 'C#', 'D#']:
-            encoded += str(A[m[i:i+2]])
-            i += 2
-        else:
-            encoded += str(A[m[i:i+1]])
-            i += 1
-    return encoded
-print(solution("CC#BCC#BCC#BCC#B", ["03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"]))
+    for char, i in A.items():
+        m = m.replace(char, i)
+    return m
+
+print(solution("ABCDEFG", ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
