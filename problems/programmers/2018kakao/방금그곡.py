@@ -1,23 +1,16 @@
-A = {'A#': '1', 'C#': '4', 'D#': '6', 'F#': '9', 'G#': 'B', 'A': '0',
-     'B': '2', 'C': '3', 'D': '5', 'E': '7', 'F': '8', 'G': 'A'}
 def solution(m, musicinfos):
     musics = {}
-    e_m = encode_m(m)
+    m = m.replace('A#', '0').replace('C#', '1').replace('D#', '2').replace('E#', '3').replace('F#', '4').replace('G#', '5')
     for musicinfo in musicinfos:
         s, e, title, a = musicinfo.split(',')
-        ea = encode_m(a)
+        a = a.replace('A#', '0').replace('C#', '1').replace('D#', '2').replace('E#', '3').replace('F#', '4').replace('G#', '5')
         sM, sm = map(int, s.split(':'))
         eM, em = map(int, e.split(':'))
         t = (eM - sM) * 60 + em - sm
-        musics[title] = ea * (t // len(ea)) + ea[:t % len(ea)]
-    for title, mm in musics.items():
-        if e_m in mm:
+        musics[title] = a * (t // len(a)) + a[:t % len(a)]
+    for title, mm in sorted(musics.items(), key=lambda x: -len(x[1])):
+        if m in mm:
             return title
     return '(None)'
-
-def encode_m(m):
-    for char, i in A.items():
-        m = m.replace(char, i)
-    return m
 
 print(solution("ABCDEFG", ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
